@@ -1,48 +1,48 @@
 @extends('layouts.admin')
 @section('content')
-<h3 class="page-title">System Calendar </h3>
-<div class="card">
-    <div class="card-header">
-        Calendar
-    </div>
 
-    <div class="card-body">
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
-        <form>
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label for="room_id">Room</label>
-                        <select class="form-control select2" name="room_id" id="room_id">
-                            @foreach($rooms as $id => $room)
-                                <option value="{{ $id }}" {{ request()->input('room_id') == $id ? 'selected' : '' }}>{{ $room }}</option>
-                            @endforeach
-                        </select>
+<div class="container">    
+    <div class="card">
+        <div class="card-header">
+            Calendar
+        </div>
+
+        <div class="card-body">
+            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
+            <form>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="room_id">Room</label>
+                            <select class="form-control select2" name="room_id" id="room_id">
+                                @foreach($rooms as $id => $room)
+                                    <option value="{{ $id }}" {{ request()->input('room_id') == $id ? 'selected' : '' }}>{{ $room }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="customer_id">customer</label>
+                            <select class="form-control select2" name="customer_id" id="customer_id">
+                                @foreach($customers as $id => $customer)
+                                    <option value="{{ $id }}" {{ request()->input('customer_id') == $id ? 'selected' : '' }}>{{ $customer }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary mt-4">
+                            Filter
+                        </button>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label for="customer_id">customer</label>
-                        <select class="form-control select2" name="customer_id" id="customer_id">
-                            @foreach($customers as $id => $customer)
-                                <option value="{{ $id }}" {{ request()->input('customer_id') == $id ? 'selected' : '' }}>{{ $customer }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-primary mt-4">
-                        Filter
-                    </button>
-                </div>
-            </div>
-        </form>
+            </form>
 
-        <div id='calendar'></div>
+            <div id='calendar'></div>
+        </div>
     </div>
 </div>
-
-
 
 @endsection
 
